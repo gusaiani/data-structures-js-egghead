@@ -1,0 +1,15 @@
+{
+  "name": "data-structures-egghead",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/gusaiani/data-structures-js-egghead",
+  "author": "Gustavo Saiani <gustavo@poe.ma>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^25.1.0"
+  }
+}
