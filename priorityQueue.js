@@ -21,7 +21,7 @@ function createPriorityQueue() {
         : highPriorityQueue.peek()
     },
     length() {
-      return highPriorityQueue.length() + lowPriorityQueue.length()
+      return highPriorityQueue.length + lowPriorityQueue.length
     },
     isEmpty() {
       return highPriorityQueue.isEmpty() && lowPriorityQueue.isEmpty()
