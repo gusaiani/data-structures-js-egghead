@@ -1,7 +1,7 @@
 const createPriorityQueue = require('../priorityQueue.js')
 
-const element1 = '1'
-const element2 = '2'
+const element1 = Symbol()
+const element2 = Symbol()
 
 describe('priorityQueue', () => {
   describe('enqueue', () => {
