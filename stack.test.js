@@ -1,7 +1,7 @@
 const createStack = require('./stack')
 
-const element1 = 'element1'
-const element2 = 'element2'
+const element1 = Symbol()
+const element2 = Symbol()
 
 describe('stack', () => {
   describe('push', () => {
@@ -21,6 +21,25 @@ describe('stack', () => {
       const s = createStack()
       s.push(element1)
       expect(s.isEmpty()).toBe(false)
+    })
+  })
+
+  describe('peek', () => {
+    test('should return last element', () => {
+      const s = createStack()
+      s.push(element1)
+      s.push(element2)
+      expect(s.peek()).toBe(element2)
+    })
+  })
+
+  describe('pop', () => {
+    test('should remove last element', () => {
+      const s = createStack()
+      s.push(element1)
+      s.push(element2)
+      s.pop()
+      expect(s.peek()).toBe(element1)
     })
   })
 })

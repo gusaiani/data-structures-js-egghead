@@ -1,15 +1,14 @@
 function createStack() {
   const array = []
-  // push
-  // pop
-  // peek
-  // length
-  // isEmpty
+
   return {
     push(element) {
       array.push(element)
     },
-    peek(element) {
+    pop() {
+      array.pop()
+    },
+    peek() {
       return array[array.length - 1]
     },
     get length() {
