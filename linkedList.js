@@ -80,7 +80,36 @@ function createLinkedList() {
 
       return current
     },
-    // delete
+    delete(index) {
+      if (this.isEmpty()) {
+        return null
+      }
+
+      if (index > this.length - 1) {
+        return null
+      }
+
+      if (index === 0) {
+        this.head = this.head.next
+      }
+
+      const ignore = {
+        value: 1,
+        next: {
+          value: 2,
+          next: {
+            value: 3,
+            next: {
+              value: 4,
+              next: {
+                value: 5,
+                next: null
+              }
+            }
+          }
+        }
+      }
+    },
     isEmpty() {
       return this.length === 0
     }
