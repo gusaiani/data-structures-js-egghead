@@ -85,33 +85,50 @@ function createLinkedList() {
         return null
       }
 
-      if (index > this.length - 1) {
+      if (index < 0 || index > this.length - 1) {
         return null
       }
 
       if (index === 0) {
+        const deleted = this.head
         this.head = this.head.next
+        this.length--
+        return deleted
       }
 
-      const ignore = {
-        value: 1,
-        next: {
-          value: 2,
-          next: {
-            value: 3,
-            next: {
-              value: 4,
-              next: {
-                value: 5,
-                next: null
-              }
-            }
-          }
-        }
+      let current = this.head
+      let previous
+      let iterator = 0
+      while(iterator < index ) {
+        iterator++
+        previous = current
+        current = current.next
       }
+
+      const deleted = current
+      previous.next = current.next
+
+      if (previous.next === null) {
+        this.tail = previous
+      }
+
+      this.length--
+
+      return deleted
     },
     isEmpty() {
       return this.length === 0
+    },
+    print() {
+      const values = []
+      let current = this.head
+
+      while (current) {
+        values.push(current.value)
+        current = current.next
+      }
+
+      return values.join(' → ')
     }
   }
 }
