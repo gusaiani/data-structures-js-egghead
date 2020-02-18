@@ -26,6 +26,34 @@ function createGraph(directed = false) {
 
     getNode(key) {
       return nodes.find(node => node.key == key)
+    },
+
+    addEdge(node1key, node2key) {
+      const node1 = this.getNode(node1key)
+      const node2 = this.getNode(node2key)
+
+      node1.addNeighbor(node2)
+      edges.push(`${node1key}-${node2key}`)
+
+      if (!directed) {
+        node2.addNeighbor(node1)
+      }
+    },
+
+    print() {
+      return nodes.map(({key, neighbors}) => {
+        let result = key
+
+        if (neighbors.length) {
+          result += ` => ${neighbors.map
+          (neighbor => neighbor.key).join(' ')}`
+        }
+
+        return result
+      })
+      .join('\n')
     }
   }
 }
+
+module.exports = createGraph
