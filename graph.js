@@ -45,8 +45,7 @@ function createGraph(directed = false) {
         let result = key
 
         if (neighbors.length) {
-          result += ` => ${neighbors.map
-          (neighbor => neighbor.key).join(' ')}`
+          result += ` => ${neighbors.map(neighbor => neighbor.key).join(' ')}`
         }
 
         return result

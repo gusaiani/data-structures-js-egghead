@@ -14,21 +14,58 @@ describe('graph', () => {
       g.addNode('Kyle')
       expect(g.getNode('Kyle').neighbors).toEqual([])
     })
+  })
 
-    test('all the stuff', () => {
-
+  describe('addEdge', () => {
+    test('when not directed', () => {
       const g = createGraph()
-      g.addNode('Kyle')
-      g.addNode('Anna')
-      g.addNode('Krios')
-      g.addNode('Tali')
 
-      g.addEdge('Kyle', 'Anna')
-      g.addEdge('Anna', 'Kyle')
-      g.addEdge('Kyle', 'Krios')
-      g.addEdge('Kyle', 'Tali')
+      g.addNode('First')
+      g.addNode('Second')
 
-      console.log(g.print())
+      const second = g.getNode('Second')
+      expect(second.neighbors).toEqual([])
+
+      g.addEdge('First', 'Second')
+      expect(second.neighbors.length).toBe(1)
+      expect(g.edges[0]).toBe('First-Second')
+      expect(second.neighbors.length).toBe(1)
+    })
+
+    test('when directed', () => {
+      const g = createGraph(true)
+
+      g.addNode('First')
+      g.addNode('Second')
+
+      g.addEdge('First', 'Second')
+      expect(g.edges[0]).toBe('First-Second')
+
+      const second = g.getNode('Second')
+      expect(second.neighbors.length).toBe(0)
+    })
+  })
+
+  describe('print', () => {
+    test('without neighbors', () => {
+      const g = createGraph()
+
+      g.addNode('First')
+      g.addNode('Second')
+
+      const printOut = g.print()
+      expect(printOut).toBe('First\nSecond')
+    })
+
+    test('with neighbors', () => {
+      const g = createGraph()
+
+      g.addNode('First')
+      g.addNode('Second')
+      g.addEdge('First', 'Second')
+
+      const printOut = g.print()
+      expect(printOut).toBe('First => Second\nSecond => First')
     })
   })
 })
