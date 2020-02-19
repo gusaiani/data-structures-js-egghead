@@ -68,4 +68,34 @@ describe('graph', () => {
       expect(printOut).toBe('First => Second\nSecond => First')
     })
   })
+
+  describe('breadth first search', () => {
+    test('works', () => {
+      const g = createGraph()
+
+      const nodes = 'abcdef'.split('')
+      const edges = [
+        ['a', 'b'],
+        ['a', 'e'],
+        ['a', 'f'],
+        ['b', 'd'],
+        ['b', 'e'],
+        ['c', 'b'],
+        ['d', 'c'],
+        ['d', 'e']
+      ]
+
+      nodes.forEach(node => {
+        g.addNode(node)
+      })
+
+      edges.forEach(nodes => {
+        g.addEdge(...nodes)
+      })
+
+      g.breadthFirstSearch('a', node => {
+        console.log(node.key)
+      })
+    })
+  })
 })
