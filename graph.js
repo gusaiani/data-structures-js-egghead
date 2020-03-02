@@ -6,11 +6,16 @@ const createQueue = require('./queue')
 
 function createNode(key) {
   const neighbors = []
+  const children = []
   return {
     key,
+    children,
     neighbors,
     addNeighbor(node) {
       neighbors.push(node)
+    },
+    addChild(node) {
+      children.push(node)
     }
   }
 }
@@ -36,9 +41,11 @@ function createGraph(directed = false) {
       const node2 = this.getNode(node2key)
 
       node1.addNeighbor(node2)
+      node1.addChild(node2)
       edges.push(`${node1key}-${node2key}`)
 
       if (!directed) {
+        node2.addChild(node1)
         node2.addNeighbor(node1)
       }
     },
@@ -67,7 +74,32 @@ function createGraph(directed = false) {
           }
         })
       }
+    },
 
+    depthFirstSearch(startingNodeKey, visitFn) {
+      const startingNode = this.getNode(startingNodeKey)
+
+      const visitedHash = nodes.reduce((acc, cur) => {
+        acc[cur.key] = false
+        return acc
+      }, {})
+
+      function explore(node) {
+        if(visitedHash[node.key]) {
+          return
+        }
+
+        visitFn(node)
+        visitedHash[node.key] = true
+
+        if (node.children) {
+          node.children.forEach(child => {
+            explore(child)
+          })
+        }
+      }
+
+      explore(startingNode)
     },
 
     print() {

@@ -132,4 +132,69 @@ describe('graph', () => {
       expect(searchResults).toEqual(['d'])
     })
   })
+
+  describe('depth-first search', () => {
+    test('6 nodes and 8 edges', () => {
+      const searchResults = []
+      const g = createGraph()
+
+      const nodes = 'abcdef'.split('')
+      const edges = [
+        ['a', 'b'],
+        ['a', 'e'],
+        ['a', 'f'],
+        ['b', 'd'],
+        ['b', 'e'],
+        ['c', 'b'],
+        ['d', 'c'],
+        ['d', 'e']
+      ]
+
+      nodes.forEach(g.addNode)
+
+      edges.forEach(nodes => {
+        g.addEdge(...nodes)
+      })
+
+      g.depthFirstSearch('a', ({key}) => {
+        searchResults.push(key)
+      })
+
+      expect(searchResults).toEqual(
+        ['a', 'b', 'd', 'c', 'e', 'f']
+      )
+    })
+
+    test('6 nodes and 3 edges', () => {
+      const g = createGraph()
+
+      const nodes = 'abcdef'.split('')
+      const edges = [
+        ['a', 'b'],
+        ['b', 'c'],
+        ['a', 'e']
+      ]
+
+      nodes.forEach(g.addNode)
+
+      edges.forEach(nodes => {
+        g.addEdge(...nodes)
+      })
+
+      let searchResults = []
+      g.breadthFirstSearch('a', ({key}) => {
+        searchResults.push(key)
+      })
+
+      expect(searchResults).toEqual(
+        ['a', 'b', 'c', 'e']
+      )
+
+      searchResults = []
+      g.breadthFirstSearch('d', ({key}) => {
+        searchResults.push(key)
+      })
+      expect(searchResults).toEqual(['d'])
+    })
+  })
 })
