@@ -92,6 +92,7 @@ function createGraph(directed = false) {
         visitFn(node)
         visitedHash[node.key] = true
 
+        /* istanbul ignore else  */
         if (node.children) {
           node.children.forEach(child => {
             explore(child)

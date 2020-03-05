@@ -196,5 +196,16 @@ describe('graph', () => {
       })
       expect(searchResults).toEqual(['d'])
     })
+
+    test('graphs with childless nodes', () => {
+      const g = createGraph()
+      let searchResults = []
+
+      g.addNode('a')
+      g.depthFirstSearch('a', ({key}) => {
+        searchResults.push(key)
+      })
+      expect(searchResults).toEqual(['a'])
+    })
   })
 })
