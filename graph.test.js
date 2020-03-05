@@ -182,7 +182,7 @@ describe('graph', () => {
       })
 
       let searchResults = []
-      g.breadthFirstSearch('a', ({key}) => {
+      g.depthFirstSearch('a', ({key}) => {
         searchResults.push(key)
       })
 
@@ -191,7 +191,7 @@ describe('graph', () => {
       )
 
       searchResults = []
-      g.breadthFirstSearch('d', ({key}) => {
+      g.depthFirstSearch('d', ({key}) => {
         searchResults.push(key)
       })
       expect(searchResults).toEqual(['d'])
