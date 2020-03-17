@@ -1,4 +1,4 @@
-const createLinkedList = require('./linkedList')
+const createLinkedList = require('../linkedList')
 
 describe('linked list', () => {
   describe('get', () => {

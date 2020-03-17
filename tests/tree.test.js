@@ -1,4 +1,4 @@
-const createTree = require('./tree')
+const createTree = require('../tree')
 
 describe('tree', () => {
   test('html tree', () => {

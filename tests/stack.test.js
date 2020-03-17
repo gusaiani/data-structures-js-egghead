@@ -1,4 +1,4 @@
-const createStack = require('./stack')
+const createStack = require('../stack')
 
 const element1 = Symbol()
 const element2 = Symbol()
