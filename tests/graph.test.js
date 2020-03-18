@@ -1,4 +1,4 @@
-const createGraph = require('./graph')
+const createGraph = require('../graph')
 
 describe('graph', () => {
   describe('addNode', () => {
