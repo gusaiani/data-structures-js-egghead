@@ -1,3 +1,5 @@
+[![SourceLevel](https://app.sourcelevel.io/github/gusaiani/data-structures-js-egghead.svg)](https://app.sourcelevel.io/github/gusaiani/data-structures-js-egghead)
+
 # Data Structures in JavaScript
 
 In this repo I work on [Egghead's Data Structure in JS course](https://egghead.io/lessons/javascript-queue-data-structure-in-javascript).
